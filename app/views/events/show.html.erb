@@ -10,6 +10,10 @@
       <div class="event-time">
         日程:<%= @event.date %>
       </div>
+      <div class="events-menus">
+        <%= link_to("修正", "/events/#{@event.id}/edit") %>
+        <%= link_to("中止", "/events/#{@event.id}/destroy", {method: "post"}) %>
+      </div>
     </div>
   </div>
 </div>

@@ -9,12 +9,42 @@ class EventsController < ApplicationController
   end
 
   def new
+     @event = Event.new
   end
   
   def create
     @event = Event.new(event_name: params[:event_name], date: params[:date], content: params[:content])
-    @event.save
-    redirect_to("/events/index")  
+    if @event.save
+      flash[:notice] = "Eventを立上げました"
+      redirect_to("/events/index")  
+    else
+      render("events/new")
+    end
+  end
+
+  def edit
+    @event = Event.find_by(id: params[:id])
+  end
+
+  def update
+    @event = Event.find_by(id: params[:id])
+    @event.event_name = params[:event_name]
+    @event.date = params[:date]
+    @event.content = params[:content]
+
+    if @event.save
+      flash[:notice] = "Eventを修正しました"
+      redirect_to("/events/index")
+    else
+      render("/events/edit")
+    end
   end
   
+  def destroy
+    @event = Event.find_by(id: params[:id])
+    @event.destroy
+    flash[:notice] = "Eventを中止しました"
+    redirect_to("/events/index")
+  end
+
 end

@@ -5,9 +5,18 @@
     <%= form_tag("/events/create") do %>
       <div class="form">
         <div class="form-body">
-          <textarea name="event_name"></textarea>
-          <textarea name="date"></textarea>
-          <textarea name="content"></textarea>
+          
+          <% @event.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <p>イベント名</p>
+          <textarea name="event_name"><%= @event.event_name %></textarea>
+          <p>開催予定日</p>
+          <textarea name="date"><%= @event.date %></textarea>
+          <p>詳細</p>
+          <textarea name="content"><%= @event.content %></textarea>
         <input type="submit" value="確定">
       </div>
     </div>
