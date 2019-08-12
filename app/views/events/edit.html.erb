@@ -1,0 +1,23 @@
+<div class="main events-new">
+  <div class="container">
+    <h1 class="form-heading">内容修正</h1>
+    <%= form_tag("/events/#{@event.id}/update") do %>
+    <div class="form">
+      <div class="form-body">
+        
+        <% @event.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+        
+        <textarea name="event_name"><%= @event.event_name %></textarea>
+        <textarea name="date"><%= @event.date %></textarea>
+        <textarea name="content"><%= @event.content %></textarea>
+        <input type="submit" value="確定">
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
