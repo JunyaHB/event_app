@@ -11,12 +11,24 @@
   <body>
 
 <header>
+
   <div class="header-logo">
-    EventNet
+     <%= link_to("EventNet", "/") %>
   </div>
-  <ul class="header-menus">
-    <li>EventNetとは</li>
-  </ul>
+    <ul class="header-menus">
+      <li>
+        <%= link_to("EventNetとは", "/about") %>
+      </li>
+      <li>
+        <%= link_to("開催予定", "/events/index") %>
+      </li>
+
+      <li>
+        <%= link_to("立上げ", "/events/new") %>
+      </li>
+
+     </ul>
+  
 </header>
 
     <%= yield %>

@@ -1,0 +1,16 @@
+<div class="main events-new">
+  <div class="container">
+    <h1 class="form-heading">Event立上げ</h1>
+
+    <%= form_tag("/events/create") do %>
+      <div class="form">
+        <div class="form-body">
+          <textarea name="event_name"></textarea>
+          <textarea name="date"></textarea>
+          <textarea name="content"></textarea>
+        <input type="submit" value="確定">
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
