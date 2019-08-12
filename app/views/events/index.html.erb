@@ -1,0 +1,11 @@
+<div class="main events-index">
+  <div class="container">
+    <% @events.each do |event| %>
+    <div class="events-index-item">
+      <%= link_to(event.event_name, "/events/#{event.id}") %><br>
+      <%= event.date %><br>
+      <%= event.content %><br>
+    </div>
+    <% end %>
+  </div>
+</div>

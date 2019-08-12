@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EventApp</title>
+    <title>Event&communication</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,28 @@
   </head>
 
   <body>
+
+<header>
+
+  <div class="header-logo">
+     <%= link_to("EventNet", "/") %>
+  </div>
+    <ul class="header-menus">
+      <li>
+        <%= link_to("EventNetとは", "/about") %>
+      </li>
+      <li>
+        <%= link_to("開催予定", "/events/index") %>
+      </li>
+
+      <li>
+        <%= link_to("立上げ", "/events/new") %>
+      </li>
+
+     </ul>
+  
+</header>
+
     <%= yield %>
   </body>
 </html>
