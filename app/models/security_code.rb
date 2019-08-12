@@ -1,0 +1,2 @@
+class SecurityCode < ApplicationRecord
+end
