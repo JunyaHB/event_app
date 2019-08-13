@@ -18,15 +18,15 @@
       </div>
       
       <% if Join.find_by(user_id: @current_user.id, event_id: @event.id) %>
-         <%= link_to("キャンセル", "/joins/#{@event.id}/destroy", {method: "post", class: 'btn'})%>
+         <%= link_to("キャンセル", "/joins/#{@event.id}/destroy", {method: "post", class: 'btn'})%></br>
       <% else %>
-        <%=link_to("申し込む", "/joins/#{@event.id}/create", {method: "post", class: 'btn'})%>
+        <%=link_to("申し込む", "/joins/#{@event.id}/create", {method: "post", class: 'btn'})%></br>
       <% end %>
 
-
-
-
-
+    <% @reserves.each do |reserve| %>
+      <%= reserve.user.name  %>
+      <img src="<%= "/user_images/#{reserve.user.image_name}" %>">
+    <% end %>
       
       <% if @event.user_id == @current_user.id %>
       <div class="events-menus">
