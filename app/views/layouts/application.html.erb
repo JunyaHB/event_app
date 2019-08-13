@@ -16,29 +16,35 @@
      <%= link_to("EventNet", "/") %>
   </div>
     <ul class="header-menus">
-      <li>
-        <%= link_to("EventNetとは", "/about") %>
-      </li>
-      <li>
-        <%= link_to("開催予定", "/events/index") %>
-      </li>
 
-      <li>
-        <%= link_to("立上げ", "/events/new") %>
-      </li>
-      
-      <li>
-        <%= link_to("ユーザー一覧", "/users/index") %>
-      </li>
-      
-      <li>
-        <%= link_to("新規登録", "/signup") %>
-      </li>
 
-      <li>
-        <%= link_to("ログイン", "/login") %>
-      </li>
-
+      <% if @current_user %>
+        <li>
+          <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+        </li>
+        <li>
+          <%= link_to("開催予定", "/events/index") %>
+        </li>
+        <li>
+          <%= link_to("立上げ", "/events/new") %>
+        </li>
+        <li>
+          <%= link_to("ユーザー一覧", "/users/index") %>
+        </li>
+        <li>
+          <%= link_to("ログアウト", "/logout", {method: :post}) %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to("EventNetとは", "/about") %>
+        </li>
+        <li>
+          <%= link_to("新規登録", "/signup") %>
+        </li>
+        <li>
+          <%= link_to("ログイン", "/login") %>
+        </li>
+        <% end %>
      </ul>
   
       <% if flash[:notice] %>
