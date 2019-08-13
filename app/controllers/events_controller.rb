@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user, {only: [:index, :show, :edit, :update, :new]}
+  before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
 
   def index
     @events = Event.all.order(created_at: :desc)
@@ -7,6 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
+    @user = @event.user
   end
 
   def new
@@ -14,7 +16,20 @@ class EventsController < ApplicationController
   end
   
   def create
-    @event = Event.new(event_name: params[:event_name], date: params[:date], content: params[:content])
+    @event = Event.new(event_name: params[:event_name], 
+                      date: params[:date], 
+                      content: params[:content],
+                      user_id: @current_user.id,
+                      event_image: "default_event.jpg"
+                      )
+
+    if params[:image]
+      @event.event_image = "#{@event.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/event_images/#{@event.event_image}", image.read)
+    end
+
+
     if @event.save
       flash[:notice] = "Eventを立上げました"
       redirect_to("/events/index")  
@@ -33,6 +48,12 @@ class EventsController < ApplicationController
     @event.date = params[:date]
     @event.content = params[:content]
 
+    if params[:image]
+      @event.event_image = "#{@event.id}.jpg"
+      image = params[:image]
+      File.binwrite("public/event_images/#{@event.event_image}", image.read)
+    end
+
     if @event.save
       flash[:notice] = "Eventを修正しました"
       redirect_to("/events/index")
@@ -46,6 +67,14 @@ class EventsController < ApplicationController
     @event.destroy
     flash[:notice] = "Eventを中止しました"
     redirect_to("/events/index")
+  end
+  
+  def ensure_correct_user
+    @event = Event.find_by(id: params[:id])
+    if @event.user_id != @current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/events/index")
+    end
   end
 
 end

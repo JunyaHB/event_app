@@ -1,6 +1,13 @@
 <div class="main events-show">
   <div class="container">
     <div class="events-show-item">
+
+      <div class="event-user-name">
+        <img src="<%= "/event_images/#{@event.event_image}" %>">
+          <%= link_to(@user.name, "/users/#{@user.id}") %>
+      </div>
+
+
       <p>
         <%= @event.event_name %>
       </p>
@@ -10,10 +17,12 @@
       <div class="event-time">
         日程:<%= @event.date %>
       </div>
+      <% if @event.user_id == @current_user.id %>
       <div class="events-menus">
         <%= link_to("修正", "/events/#{@event.id}/edit") %>
         <%= link_to("中止", "/events/#{@event.id}/destroy", {method: "post"}) %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

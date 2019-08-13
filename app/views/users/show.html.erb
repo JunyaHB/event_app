@@ -8,8 +8,22 @@
       <% if @user.id == @current_user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
-
-
     </div>
+    
+        <% @user.events.each do |event| %>
+            <div class="events-index-item">
+        <div class="event-left">
+          <img src="<%= "/event_images/#{event.event_image}" %>">
+        </div>
+        <div class="event-right">
+          <div class="event-user-name">
+            <%= link_to(event.user.name, "/users/#{event.user.id}") %>
+          </div>
+          <%= link_to(event.content, "/events/#{event.id}") %>
+        </div>
+      </div>
+    <% end %>
+
+    
   </div>
 </div>
