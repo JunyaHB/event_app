@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get 'users/index' => "users#index"
   get "signup" => "users#new"
   get 'events/index' => "events#index"
@@ -10,11 +9,13 @@ Rails.application.routes.draw do
   get "events/:id" => "events#show"
   get "events/:id/edit" => "events#edit"
   get "users/:id" => "users#show"
+  get "users/:id/edit" => "users#edit"
   
   post "users/create" => "users#create"
   post "events/create" => "events/create"
   post "events/:id/update" => "events#update"
   post "events/:id/destroy" => "events#destroy"
+  post "users/:id/update" => "users#update"  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

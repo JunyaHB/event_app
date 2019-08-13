@@ -12,9 +12,9 @@
             </div>
           <% end %>
           <p>イベント名</p>
-          <textarea name="event_name"><%= @event.event_name %></textarea>
-          <p>開催予定日</p>
-          <textarea name="date"><%= @event.date %></textarea>
+          <input name="event_name" value="<%= @event.event_name %>" >
+          <p>開催予定日(yyyymmdd)</p>
+          <input name="date" value="<%= @event.date %>">
           <p>詳細</p>
           <textarea name="content"><%= @event.content %></textarea>
         <input type="submit" value="確定">
