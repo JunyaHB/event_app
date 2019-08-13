@@ -81,6 +81,22 @@
   font-size: 14px;
 }
 
+.btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+}
+
+.btn {
+  background: #1ec7bb;
+}
+
+
 /* events/new ================================ */
 .events-new textarea {
   font-size: 20px;
@@ -94,3 +110,5 @@
   font-size: 24px;
   opacity: 0.5;
 }
+
+
