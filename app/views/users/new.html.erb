@@ -17,6 +17,8 @@
         <input name="name" value="<%= @user.name %>">  
         <p>メールアドレス</p>
         <input name="email" value="<%= @user.email %>">
+        <p>パスワード(必須)</p>
+        <input name="password" type="password" value="<%= @user.password_digest %>">
         <p>自己紹介</p>
         <textarea name="introduction" value="<%= @user.introduction %>" ></textarea>
         <input type="submit" value="新規登録">
