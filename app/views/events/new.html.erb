@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="form-heading">Event立上げ</h1>
 
-    <%= form_tag("/events/create") do %>
+    <%= form_tag("/events/create", {multipart: true}) do %>
       <div class="form">
         <div class="form-body">
           
@@ -15,6 +15,8 @@
           <input name="event_name" value="<%= @event.event_name %>" >
           <p>開催予定日(yyyymmdd)</p>
           <input name="date" value="<%= @event.date %>">
+          <p>画像</p>
+          <input name="image" type="file">
           <p>詳細</p>
           <textarea name="content"><%= @event.content %></textarea>
         <input type="submit" value="確定">
