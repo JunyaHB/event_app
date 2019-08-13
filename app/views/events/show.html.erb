@@ -7,7 +7,6 @@
           <%= link_to(@user.name, "/users/#{@user.id}") %>
       </div>
 
-
       <p>
         <%= @event.event_name %>
       </p>
@@ -17,6 +16,18 @@
       <div class="event-time">
         日程:<%= @event.date %>
       </div>
+      
+      <% if Join.find_by(user_id: @current_user.id, event_id: @event.id) %>
+         <%= link_to("キャンセル", "/joins/#{@event.id}/destroy", {method: "post", class: 'btn'})%>
+      <% else %>
+        <%=link_to("申し込む", "/joins/#{@event.id}/create", {method: "post", class: 'btn'})%>
+      <% end %>
+
+
+
+
+
+      
       <% if @event.user_id == @current_user.id %>
       <div class="events-menus">
         <%= link_to("修正", "/events/#{@event.id}/edit") %>

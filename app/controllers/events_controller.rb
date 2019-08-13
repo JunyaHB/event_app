@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by(id: params[:id])
     @user = @event.user
+    @reserves = Join.where(event_id: @event.id)
   end
 
   def new

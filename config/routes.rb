@@ -15,11 +15,12 @@ Rails.application.routes.draw do
   post "users/create" => "users#create"
   post "events/create" => "events/create"
   post "login" => "users#login"
-   post "logout" => "users#logout"
+  post "logout" => "users#logout"
+  post "joins/:event_id/create" => "joins#create"
   post "events/:id/update" => "events#update"
   post "events/:id/destroy" => "events#destroy"
   post "users/:id/update" => "users#update"  
-  
+  post "joins/:event_id/destroy" => "joins#destroy"
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
