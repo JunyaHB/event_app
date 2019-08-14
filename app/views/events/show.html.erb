@@ -1,39 +1,41 @@
 <div class="main events-show">
   <div class="container">
     <div class="events-show-item">
+      <img src="<%= "/event_images/#{@event.event_image}" %>">
+        <div class="event-user-name">
+        
+          </div>
 
-      <div class="event-user-name">
-        <img src="<%= "/event_images/#{@event.event_image}" %>">
-          <%= link_to(@user.name, "/users/#{@user.id}") %>
-      </div>
+</br>
+<h2><div align="center" font size="20"><%= @event.event_name %></div></h2>
+<div align="right">日程:<%= @event.date.strftime("%Y/%m/%d") %></div>
+<div align="right">主催者：<%= link_to(@user.name, "/users/#{@user.id}") %></div>
 
-      <p>
-        <%= @event.event_name %>
-      </p>
-      <p>
-        <%= simple_format(@event.content) %>
-      </p>
-      <div class="event-time">
-        日程:<%= @event.date.strftime("%Y/%m/%d") %>
-      </div>
-      
-      <% if Join.find_by(user_id: @current_user.id, event_id: @event.id) %>
-         <%= link_to("キャンセル", "/joins/#{@event.id}/destroy", {method: "post", class: 'btn'})%></br>
-      <% else %>
-        <%=link_to("申し込む", "/joins/#{@event.id}/create", {method: "post", class: 'btn'})%></br>
-      <% end %>
 
-    <% @reserves.each do |reserve| %>
-      <%= reserve.user.name  %>
-      <img src="<%= "/user_images/#{reserve.user.image_name}" %>">
-    <% end %>
-      
-      <% if @event.user_id == @current_user.id %>
-      <div class="events-menus">
-        <%= link_to("修正", "/events/#{@event.id}/edit") %>
-        <%= link_to("中止", "/events/#{@event.id}/destroy", {method: "post"}) %>
-      </div>
-      <% end %>
-    </div>
-  </div>
+
+<% if Join.find_by(user_id: @current_user.id, event_id: @event.id) %>
+<%= link_to("キャンセル", "/joins/#{@event.id}/destroy", {method: "post", class: 'btn'})%></br>
+<% else %>
+<%=link_to("申し込む", "/joins/#{@event.id}/create", {method: "post", class: 'btn'})%></br>
+<% end %>
+
+<div>参加者：</div>
+
+<div class="events-show-item2">
+<% @reserves.each do |reserve| %>
+  <img src="<%= "/user_images/#{reserve.user.image_name}" %>">
+  <%= reserve.user.name  %>
+<% end %>
+</div>
+
+<%= simple_format(@event.content) %>
+
+<% if @event.user_id == @current_user.id %>
+<div>
+<%= link_to("修正", "/events/#{@event.id}/edit") %>
+<%= link_to("中止", "/events/#{@event.id}/destroy", {method: "post"}) %>
+</div>
+<% end %>
+</div>
+</div>
 </div>
