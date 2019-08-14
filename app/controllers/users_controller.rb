@@ -85,14 +85,21 @@ class UsersController < ApplicationController
   end
 
   def joins
+    now = Time.current
+    yesterday = now.yesterday
     @user = User.find_by(id: params[:id])
+    @future_event = Event.all.where("date > ?", yesterday)
     @joins = Join.where(user_id: @user.id)    
+
   end
 
-  def joined
-    @user = User.find_by(id: params[:id])
-    @joins = Join.where(user_id: @user.id)    
-  end
+#  def joined
+#    now = Time.current
+#    yesterday = now.yesterday
+#    @user = User.find_by(id: params[:id])
+#    @past_event = Event.all.where("date < ?", now)
+#    @joins = Join.where(user_id: @user.id)    
+#  end
 
   def ensure_correct_user
     if @current_user.id != params[:id].to_i

@@ -3,8 +3,11 @@ class EventsController < ApplicationController
   before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
 
   def index
-    @events = Event.all.order(created_at: :desc)
+    now = Time.current
+    yesterday = now.yesterday
+    @events = Event.all.where("date > ?", yesterday).order(:date)
   end
+
 
   def show
     @event = Event.find_by(id: params[:id])

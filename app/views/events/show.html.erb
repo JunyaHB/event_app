@@ -11,7 +11,7 @@
         <%= @event.event_name %>
       </p>
       <p>
-        <%= @event.content %>
+        <%= simple_format(@event.content) %>
       </p>
       <div class="event-time">
         日程:<%= @event.date.strftime("%Y/%m/%d") %>
