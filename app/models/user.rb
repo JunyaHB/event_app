@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
     has_many :joins
-
+    has_many :events
 
 
     validates :name, {presence: true, uniqueness: true, length: {maximum: 10}}  

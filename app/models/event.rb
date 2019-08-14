@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
     
+    belongs_to :user
     has_many :joins
     
     validates :event_name, {presence: true, length: {maximum: 25}}  

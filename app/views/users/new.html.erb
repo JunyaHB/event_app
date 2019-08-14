@@ -13,13 +13,15 @@
         <% end %>
       
       <%= form_tag("/users/create") do %>
-        <p>ニックネーム（必須）</p>
+        <p>ニックネーム</p>
         <input name="name" value="<%= @user.name %>">  
-        <p>メールアドレス</p>
-        <input name="email" value="<%= @user.email %>">
-        <p>パスワード(必須)</p>
+<!--    <p>メールアドレス</p>
+        <input name="email" value="<%= @user.email %>"> -->
+        <p>パスワード</p>
         <input name="password" type="password" value="<%= @user.password %>">
-        <p>自己紹介</p>
+        <p>学生コード</p>
+        <input name="password1" type="password">
+        <p>自己紹介(任意)</p>
         <textarea name="introduction" value="<%= @user.introduction %>" ></textarea>
         <input type="submit" value="新規登録">
       <% end %>
