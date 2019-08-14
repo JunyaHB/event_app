@@ -18,11 +18,11 @@
 
 
     <% @joins.each do |join| %>
-      <% event = Event.find_by(id: join.event_id) %>
+      <% event = @past_event.find_by(id: join.event_id) %>
       
       <div class="events-index-item">
         <div class="event-left">
-          <img src="<%= "/event_images/#{event.event_image}" %>">
+
         </div>
         <div class="event-right">
           <div class="event-user-name">

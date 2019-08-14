@@ -3,7 +3,7 @@
     <div class="user">
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
+      <p><%=  simple_format(@user.introduction) %></p>
       <% if @user.id == @current_user.id %>
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
@@ -12,13 +12,12 @@
    
     <ul class="user-tabs">
       <li><%= link_to("主催", "/users/#{@user.id}") %></li>
-      <li class="active"><%= link_to("予定", "/users/#{@user.id}/joins") %></li>
-      <li class="active"><%= link_to("履歴", "/users/#{@user.id}/joined") %></li>
+      <li class="active"><%= link_to("参加予定", "/users/#{@user.id}/joins") %></li>
     </ul>
 
 
     <% @joins.each do |join| %>
-      <% event = Event.find_by(id: join.event_id) %>
+      <% event = @future_event.find_by(id: join.event_id) %>
       
       <div class="events-index-item">
         <div class="event-left">
