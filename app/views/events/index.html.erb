@@ -1,5 +1,7 @@
 <div class="main events-index">
   <div class="container">
+    
+
     <% @events.each do |event| %>
     <div class="events-index-item">
       <div class="event-left">
@@ -8,7 +10,7 @@
     
       <div class="event-right">
         <div class="event-user-name">
-      <%= link_to(event.event_name, "/events/#{event.id}") %><br>
+        <%= link_to(event.event_name, "/events/#{event.id}") %><br>
         </div>
       <p>主催者　:<%= event.user.name %></p>
       <p>開催日程:<%= event.date.strftime("%Y/%m/%d") %></p>

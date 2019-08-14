@@ -11,7 +11,7 @@
 .event-left img {
   width: 80px;
   height: 80px;
-/*  border-radius: 40%;--> */
+/*  border-radius: 40%;*/
   box-shadow: 0 2px 6px #c1ced7;
   object-fit: cover;
 }
@@ -19,6 +19,8 @@
 
 .event-user-name a {
   font-weight: 600;
+  font-size: 18px;
+  
 }
 
 .event-user-name a:hover {
@@ -53,13 +55,35 @@
 }
 
 .events-show-item img {
-  width: 60px;
-  height: 60px;
+  width: 510px;
+  height: 200px;
+/*  border-radius: 40%;*/
+  box-shadow: 0 2px 6px #c1ced7;
+  vertical-align: middle;
+  object-fit: cover; 
+}
+
+/*
+.events-show-item2 {
+  padding: 5px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+}
+*/
+.events-show-item2 img {
+  width: 30px;
+  height: 30px;
   border-radius: 40%;
   box-shadow: 0 2px 6px #c1ced7;
   vertical-align: middle;
-  object-fit: cover;
+  object-fit: cover; 
+  margin-top: 5px;
+  
 }
+
+
+
 
 .events-show-item .event-user-name a {
   vertical-align: middle;
@@ -68,12 +92,12 @@
 }
 
 .events-show-item p {
-  font-size: 24px;
+  font-size: 18px;
   margin: 20px 0;
 }
 
 .event-time {
-  color: #8899a6;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -96,6 +120,8 @@
   color: #FFF;
   background: #00bcd4;
   transition: .4s;
+  margin-left: 220px;
+  
 }
 
 .btn {
