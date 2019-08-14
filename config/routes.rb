@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get "events/:id/edit" => "events#edit"
   get "users/:id" => "users#show"
   get "users/:id/edit" => "users#edit"
+  get "users/:id/joins" => "users#joins"
+  get "users/:id/joined" => "users#joined"
   
   post "users/create" => "users#create"
   post "events/create" => "events/create"

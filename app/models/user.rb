@@ -1,5 +1,10 @@
 class User < ApplicationRecord
-    validates :name, {presence: true, length: {maximum: 10}}  
+    has_secure_password
+    has_many :joins
+
+
+
+    validates :name, {presence: true, uniqueness: true, length: {maximum: 10}}  
     validates :introduction, {length: {maximum: 400}}  
     
 def events
