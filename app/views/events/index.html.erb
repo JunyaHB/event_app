@@ -5,12 +5,15 @@
       <div class="event-left">
         <img src="<%= "/event_images/#{event.event_image}" %>">
       </div>
+    
       <div class="event-right">
         <div class="event-user-name">
       <%= link_to(event.event_name, "/events/#{event.id}") %><br>
         </div>
-      <p>開催日程:<%= event.date %></p>
+      <p>主催者　:<%= event.user.name %></p>
+      <p>開催日程:<%= event.date.strftime("%Y/%m/%d") %></p>
     </div>
+    
     </div>
     <% end %>
   </div>

@@ -17,12 +17,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(name: params[:name], 
-    email: params[:email], 
+#    email: params[:email],
     introduction: params[:introduction],
     image_name: "default_user.png",
     password: params[:password]
     )
-    if @user.save
+    
+    @code = Code.find_by(id: 1)
+    
+    if @user.save && @code.authenticate(params[:password1])
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
@@ -60,7 +63,8 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(name: params[:name])
-    if @user && @user.authenticate(params[:password])
+    @code = Code.find_by(id: 1)
+    if @user && @user.authenticate(params[:password]) && @code.authenticate(params[:password1])
       session[:user_id] = @user.id 
       flash[:notice] = "ログインしました"
       redirect_to("/events/index")
