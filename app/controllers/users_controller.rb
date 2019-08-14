@@ -23,9 +23,11 @@ class UsersController < ApplicationController
     password: params[:password]
     )
     
-    @code = Code.find_by(id: 1)
+#    @code = Code.find_by(id: 1)
+    @code = Code.new(password: params[:password1])
     
-    if @user.save && @code.authenticate(params[:password1])
+#    if @user.save && @code.authenticate(params[:password1])
+    if @user.save && @code.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
