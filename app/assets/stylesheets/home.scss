@@ -150,11 +150,14 @@ header {
 
 /* about ================================ */
 .about-main {
-  padding: 180px 8% 0;
+  padding: 200px 0 100px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
   color:  #ED6712;
-}
-
-body {
   background-image: url("/background2.jpg"); 
   background-position: center center;
   background-repeat: no-repeat;
@@ -162,6 +165,7 @@ body {
   background-size: cover;
   background-color: #464646;
 }
+
 
 .about-main h2 {
   font-size: 64px;
